@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   ft_seek_option.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 15:37:31 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/27 12:07:29 by mbourdel         ###   ########.fr       */
+/*   Created: 2015/01/27 11:50:29 by mbourdel          #+#    #+#             */
+/*   Updated: 2015/01/27 14:06:04 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LS_H
-# define FT_LS_H
-# include "libft/libft.h"
-# include <dirent.h>
-# include <errno.h>
+#include "ft_ls.h"
 
-typedef struct dirent	t_dirent;
-
-typedef struct s_option	t_option;
-struct					s_option
+static void		ft_which_one(char *str, t_option *option)
 {
-	int					no;
-	int					a;
-	int					l;
-	int					t;
-	int					r1;
-	int					r2;
-};
+	if (str[1] == '-' && !str[2])
+		option->no = 1;
+	return ;
+}
 
-char					*ft_pwd_env(char **envp);
-t_option				ft_seek_option(int ac, char **av);
-#endif
+t_option		ft_seek_option(int ac, char **av)
+{
+	t_option	option;
+	int			i;
+
+	i = 1;
+	while (av[i] && ac)
+	{
+		if (av[i][0] == '-')
+			ft_which_one(av[i], &option);
+	}
+	return (option);
+}

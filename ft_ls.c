@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 15:40:10 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 17:37:12 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/01/27 14:05:44 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ int			main(int ac, char **av, char **envp)
 	pwd = ft_pwd_env(envp);
 	directory = opendir(pwd);
 	if (directory == NULL)
-		perror("");
+		ft_putstr(strerror(errno));
 	else
 		while ((file = readdir(directory)) != NULL)
-				ft_putendl(file->d_name);
+			ft_putendl(file->d_name);
 	return (0);
+	if (ac > 1)
+		ft_putendl(av[1]);
 }
