@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   ft_option_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 15:37:31 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/27 16:47:18 by mbourdel         ###   ########.fr       */
+/*   Created: 2015/01/27 16:44:14 by mbourdel          #+#    #+#             */
+/*   Updated: 2015/01/27 19:11:33 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LS_H
-# define FT_LS_H
-# include "libft/libft.h"
-# include <dirent.h>
-# include <errno.h>
+#include "ft_ls.h"
 
-typedef struct dirent	t_dirent;
-
-typedef struct s_option	t_option;
-struct					s_option
+void		ft_option_a(DIR *dir)
 {
-	int					no;
-	int					a;
-	int					l;
-	int					t;
-	int					r1;
-	int					r2;
-	int					error;
-};
+	t_dirent	*file;
 
-char					*ft_pwd_env(char **envp);
-t_option				ft_seek_option(char **av);
-
-void					ft_option_a(DIR *dir);
-#endif
+	while ((file = readdir(dir)) != NULL)
+		ft_putendl(file->d_name);
+	return ;
+}
