@@ -12,6 +12,18 @@
 
 #include "ft_ls.h"
 
+void			ft_init_option(t_option *option)
+{
+	option->no = 0;
+	option->a = 0;
+	option->l = 0;
+	option->t = 0;
+	option->r1 = 0;
+	option->r2 = 0;
+	option->error = 0;
+	return ;
+}
+
 static void		ft_which_one(char *str, t_option *option)
 {
 	if (str[1] == '-' && !str[2])
@@ -27,11 +39,13 @@ static void		ft_which_one(char *str, t_option *option)
 	return ;
 }
 
-t_option		ft_seek_option(char **av)
+t_option		ft_seek_option(int ac, char **av)
 {
 	t_option	option;
 	int			i;
 
+	if (ac == 1)
+		option.no = 1;
 	i = 1;
 	while (av[i])
 	{

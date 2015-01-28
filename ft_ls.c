@@ -18,18 +18,24 @@ int			main(int ac, char **av, char **envp)
 	DIR			*directory;
 	t_option	option;
 
+	ft_init_option(&option);
 	directory = NULL;
 	pwd = ft_pwd_env(envp);
-	if (ac > 1)
-		option = ft_seek_option(av);
-	if (option.no)
-		ft_putendl("no option??? are you sure?? OMG !!!");
-	else if (!option.error)
+	if (*pwd)
 	{
-		if (directory == NULL)
-			ft_putendl(strerror(errno));
-		else if (option.a == 1)
-			ft_option_a(directory);
+		option = ft_seek_option(ac, av);
+		if (option.no)
+			ft_putendl("no option??? are you sure?? OMG !!!");
+		else if (!option.error)
+		{
+			directory = opendir(pwd);
+			if (directory == NULL)
+				ft_putendl(strerror(errno));
+			else if (option.a == 1)
+				ft_option_a(directory);
+		}
 	}
+	else
+		ft_putendl("KAKA");
 	return (0);
 }
