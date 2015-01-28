@@ -31,8 +31,8 @@ char		*ft_itoa(int n)
 	if (n < 0)
 		buff[i++] = '-';
 	str = ft_memalloc((size_t)i + 1);
-	if (n == -2147483648)
-		return ("-2147483648");
+	if (n < -2147483647)
+		return (ft_strdup("-2147483648"));
 	else if (n == 0)
 		str[0] = '0';
 	while (--i >= 0)
