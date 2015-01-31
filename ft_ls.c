@@ -14,25 +14,23 @@
 
 int			main(int ac, char **av, char **envp)
 {
-	char		*pwd;
-	DIR			*directory;
-	t_option	option;
+	t_env		env;
 
-	ft_init_option(&option);
-	directory = NULL;
-	pwd = ft_pwd_env(envp);
-	if (*pwd)
+	ft_init_option(&env.option);
+	env.dir = NULL;
+	env.pwd = ft_pwd_env(envp);
+	if (*env.pwd)
 	{
-		ft_seek_option(&option, ac, av);
-		if (option.no)
+		ft_seek_option(&env, ac, av);
+		if (env.option.no)
 			ft_putendl("no option??? are you sure?? OMG !!!");
-		else if (!option.error)
+		else if (!env.option.error)
 		{
-			directory = opendir(pwd);
-			if (directory == NULL)
+			env.dir = opendir(pwd);
+			if (dir == NULL)
 				ft_putendl(strerror(errno));
-			else if (option.a == 1)
-				ft_option_a(directory);
+			else if (env.option.a == 1)
+				ft_option_a(env.directory);
 		}
 	}
 	else

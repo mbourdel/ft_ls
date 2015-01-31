@@ -33,23 +33,28 @@ static void		ft_which_one(char *str, t_option *option)
 		ft_putendl(ft_strjoin("ls: illegal option -- ", "-"));
 		ft_putendl("usage: ls [-ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1] [file ...]");
 		option->error = 1;
+		return ;
 	}
 	else if (str[1] == 'a')
 		option->a = 1;
+	if (str[2])
+		
 	return ;
 }
 
-void			ft_seek_option(t_option *option, int ac, char **av)
+void			ft_seek_option(t_env *env, int ac, char **av)
 {
 	int			i;
 
 	if (ac == 1)
-		option->no = 1;
+		env->option.no = 1;
 	i = 1;
 	while (av[i])
 	{
-		if (av[i][0] == '-')
-			ft_which_one(av[i], option);
+		if (av[i][0] == '-' && env->option.no != 1)
+			ft_which_one(av[i], env->option);
+		if (av[i][0] != '-' || env->option.no == 1)
+			i = i;
 		i++;
 	}
 	return ;

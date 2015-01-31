@@ -30,9 +30,17 @@ struct					s_option
 	int					error;
 };
 
+typedef struct s_env	t_env;
+struct					s_env
+{
+	char				*pwd;
+	DIR					*dir;
+	t_option			option;
+};
+
 char					*ft_pwd_env(char **envp);
 void					ft_init_option(t_option *option);
-void					ft_seek_option(t_option *option, int ac, char **av);
+void					ft_seek_option(t_env *env, int ac, char **av);
 
 void					ft_option_a(DIR *dir);
 #endif
