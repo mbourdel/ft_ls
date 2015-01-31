@@ -23,7 +23,7 @@ int			main(int ac, char **av, char **envp)
 	pwd = ft_pwd_env(envp);
 	if (*pwd)
 	{
-		option = ft_seek_option(ac, av);
+		ft_seek_option(&option, ac, av);
 		if (option.no)
 			ft_putendl("no option??? are you sure?? OMG !!!");
 		else if (!option.error)
@@ -36,6 +36,6 @@ int			main(int ac, char **av, char **envp)
 		}
 	}
 	else
-		ft_putendl("KAKA");
+		ft_putendl("No Pwd WTF??");
 	return (0);
 }

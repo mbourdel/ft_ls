@@ -31,7 +31,8 @@ struct					s_option
 };
 
 char					*ft_pwd_env(char **envp);
-t_option				ft_seek_option(char **av);
+void					ft_init_option(t_option *option);
+void					ft_seek_option(t_option *option, int ac, char **av);
 
 void					ft_option_a(DIR *dir);
 #endif

@@ -39,19 +39,18 @@ static void		ft_which_one(char *str, t_option *option)
 	return ;
 }
 
-t_option		ft_seek_option(int ac, char **av)
+void			ft_seek_option(t_option *option, int ac, char **av)
 {
-	t_option	option;
 	int			i;
 
 	if (ac == 1)
-		option.no = 1;
+		option->no = 1;
 	i = 1;
 	while (av[i])
 	{
 		if (av[i][0] == '-')
-			ft_which_one(av[i], &option);
+			ft_which_one(av[i], option);
 		i++;
 	}
-	return (option);
+	return ;
 }

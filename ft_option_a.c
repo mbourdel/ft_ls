@@ -16,6 +16,7 @@ void		ft_option_a(DIR *dir)
 {
 	t_dirent	*file;
 
+	ft_putendl("OPTION -a BAYARD");
 	while ((file = readdir(dir)) != NULL)
 		ft_putendl(file->d_name);
 	return ;
