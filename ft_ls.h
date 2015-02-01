@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 15:37:31 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/27 16:47:18 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/01 17:14:47 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ char					*ft_pwd_env(char **envp);
 void					ft_init_option(t_option *option);
 void					ft_seek_option(t_env *env, int ac, char **av);
 
+void					ft_option_no(DIR *dir);
 void					ft_option_a(DIR *dir);
 #endif
