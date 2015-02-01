@@ -6,13 +6,14 @@
 #    By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/27 12:42:16 by mbourdel          #+#    #+#              #
-#    Updated: 2015/01/27 16:44:04 by mbourdel         ###   ########.fr        #
+#    Updated: 2015/02/01 18:42:30 by mbourdel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_ls
 
 SRC = ft_ls.c ft_pwd_env.c ft_seek_option.c ft_option_a.c
+SRC += ft_option_no.c ft_error.c
 
 OBJ = $(SRC:.c=.o)
 
