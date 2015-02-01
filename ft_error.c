@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/26 15:40:10 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/01 18:42:50 by mbourdel         ###   ########.fr       */
+/*   Created: 2015/02/01 18:38:22 by mbourdel          #+#    #+#             */
+/*   Updated: 2015/02/01 18:41:31 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int			main(int ac, char **av, char **envp)
+void		ft_error(t_env env)
 {
-	t_env		env;
-
-	ft_init_option(&env.option);
-	env.dir = NULL;
-	env.pwd = ft_pwd_env(envp);
-	if (*env.pwd)
-	{
-		ft_seek_option(&env, ac, av);
-		if (!env.option.error)
-		{
-			env.dir = opendir(env.pwd);
-			if (env.dir == NULL)
-				ft_error(env);
-			else if (env.option.a)
-				ft_option_a(env.dir);
-			else
-				ft_option_no(env.dir);
-		}
-	}
-	else
-		ft_putendl("No Pwd WTF??");
-	return (0);
+	ft_putendl(ft_strjoin(ft_strjoin("ls: ", (ft_strrchr(env.pwd, '/') + 1)),
+				ft_strjoin(": ", strerror(errno))));
+	return ;
 }
