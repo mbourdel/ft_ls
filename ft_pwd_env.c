@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 16:46:04 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 17:04:16 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/03 16:54:33 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ char		*ft_pwd_env(char **envp)
 	int		i;
 
 	i = 0;
-	while (envp[i])
+	if (**envp)
 	{
-		if (envp[i][0] == 'P' && envp[i][1] == 'W' && envp[i][2] == 'D')
-			pwd = ft_strdup((envp[i] + 4));
-		i++;
+		while (envp[i])
+		{
+			if (envp[i][0] == 'P' && envp[i][1] == 'W' && envp[i][2] == 'D')
+				pwd = ft_strdup((envp[i] + 4));
+			i++;
+		}
+		if (*pwd)
+			return (pwd);
 	}
-	if (*pwd)
-		return (pwd);
 	return (NULL);
 }
