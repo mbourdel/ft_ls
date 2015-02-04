@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 15:37:31 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/03 17:33:35 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/04 17:02:22 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_file	t_file;
 struct					s_file
 {
 	t_dirent			*dirent;
+	char				*name;
 	t_file				*pvs;
 	t_file				*nxt;
 };
