@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 15:37:31 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/04 17:02:22 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/04 19:43:22 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_LS_H
 # include "libft/libft.h"
 # include <dirent.h>
+# include <sys/stat.h>
 # include <errno.h>
 
 typedef struct dirent	t_dirent;
@@ -22,7 +23,6 @@ typedef struct s_file	t_file;
 struct					s_file
 {
 	t_dirent			*dirent;
-	char				*name;
 	t_file				*pvs;
 	t_file				*nxt;
 };
