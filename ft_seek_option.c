@@ -6,11 +6,32 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 11:50:29 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/01 17:40:47 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/09 12:52:56 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+void			ft_printoption(t_env *env)
+{
+	ft_putendl("-------------");
+	ft_putendl("list of option(s) :");
+	if (env->option.error == 0)
+	{
+		if (env->option.a == 1)
+			ft_putendl("-a");
+		if (env->option.l == 1)
+			ft_putendl("-l");
+		if (env->option.r1 == 1)
+			ft_putendl("-r");
+		if (env->option.r2 == 1)
+			ft_putendl("-R");
+		if (env->option.t == 1)
+			ft_putendl("-t");
+	}
+	else
+		ft_putendl("they are an error motherfucker :)");
+}
 
 void			ft_init_option(t_option *option)
 {

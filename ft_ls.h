@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 15:37:31 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/04 19:43:22 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/09 17:04:31 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 # include <errno.h>
 
 typedef struct dirent	t_dirent;
+typedef struct stat		t_stat;
 
 typedef struct s_file	t_file;
 struct					s_file
 {
 	t_dirent			*dirent;
+	t_stat				stat;
 	t_file				*pvs;
 	t_file				*nxt;
 };
@@ -54,8 +56,10 @@ void					ft_seek_option(t_env *env, int ac, char **av);
 
 void					ft_option_no(t_env *env);
 void					ft_option_a(t_env *env);
+void					ft_option_l(t_env *env);
 
 void					ft_get_the_files(t_env *env);
 
 void					ft_error(t_env env);
+void					ft_printoption(t_env *env); // just for test WTF
 #endif
