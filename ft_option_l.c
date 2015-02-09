@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 15:38:17 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/09 17:39:53 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/09 18:16:59 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static char		*ft_type(t_stat stat)
 	char	*res;
 
 	res = ft_memalloc(11);
-	ft_putstr(ft_itoa(S_ISDIR(stat.st_mode)));
 	S_ISDIR(stat.st_mode) ? (res[0] = 'd') : (res[0] = '-');
 	res[1] = '-';
 	res[2] = '-';
