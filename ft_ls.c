@@ -32,6 +32,7 @@ int			main(int ac, char **av, char **envp)
 			else
 			{
 				ft_get_the_files(&env);
+				ft_sort_nm_ls(&env);
 				if (env.option.l)
 					ft_option_l(&env);
 				else if (env.option.a)
@@ -43,6 +44,6 @@ int			main(int ac, char **av, char **envp)
 	}
 	else
 		ft_putendl("No Pwd WTF??");
-	ft_printoption(&env);
+//	ft_printoption(&env);
 	return (0);
 }

@@ -12,6 +12,7 @@
 
 #include "ft_ls.h"
 
+/*
 void			ft_printoption(t_env *env)
 {
 	ft_putendl("-------------");
@@ -32,7 +33,7 @@ void			ft_printoption(t_env *env)
 	else
 		ft_putendl("they are an error motherfucker :)");
 }
-
+*/
 void			ft_init_option(t_option *option)
 {
 	option->no = 0;

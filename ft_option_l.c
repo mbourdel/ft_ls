@@ -34,9 +34,6 @@ void			ft_option_l(t_env *env)
 {
 	char	*yolo;
 
-	ft_putendl(ft_itoa(S_IRUSR));
-	ft_putendl(ft_itoa(S_IWUSR));
-	ft_putendl(ft_itoa(S_IXUSR));
 	while (env->file != NULL)
 	{
 		yolo = ft_type(env->file->stat);
