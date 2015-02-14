@@ -60,6 +60,10 @@ void					ft_option_l(t_env *env);
 
 void					ft_get_the_files(t_env *env);
 
+void					ft_sort_nm_ls(t_env *env);
+void					ft_sort_t_ls(t_env *env);
+void					ft_sort_r_ls(t_env *env);
+
 void					ft_error(t_env env);
 void					ft_printoption(t_env *env); // just for test WTF
 #endif

@@ -14,6 +14,7 @@ NAME = ft_ls
 
 SRC = ft_ls.c ft_pwd_env.c ft_seek_option.c ft_option_a.c
 SRC += ft_option_no.c ft_error.c ft_ls_file.c ft_option_l.c
+SRC += ft_sort_ls.c
 
 OBJ = $(SRC:.c=.o)
 
