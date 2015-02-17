@@ -1,20 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_ls.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/02/17 12:01:20 by mbourdel          #+#    #+#             */
+/*   Updated: 2015/02/17 13:04:28 by mbourdel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 static void	ft_switch_file(t_env *env)
 {
-	t_file		*tmp_nxt;
-	t_file		*tmp_pvs;
+	t_file		**tmp1;
+	t_file		**tmp2;
 
-	tmp_nxt = env->file->nxt;
-	tmp_pvs = env->file->pvs;
-	env->file->nxt = env->file->nxt->nxt;
-	env->file->pvs = tmp_nxt;
-	if (env->file->nxt)
-		env->file->nxt->pvs = env->file;
-	env->file->pvs->nxt = env->file;
-	env->file->pvs->pvs = tmp_pvs;
-	if (env->file->pvs->pvs)
-		env->file->pvs->pvs->nxt = tmp_pvs;
+	ft_putendl("before swap");
+	if (env->file->pvs)
+	{
+		ft_putstr(env->file->pvs->dirent->d_name);
+		ft_putstr("\t--->\t");
+	}
+	ft_putstr(env->file->dirent->d_name);
+	ft_putstr("\t--->\t");
+	ft_putstr(env->file->nxt->dirent->d_name);
+	if (env->file->nxt->nxt)
+	{
+		ft_putstr("\t--->\t");
+		ft_putstr(env->file->nxt->nxt->dirent->d_name);
+	}
+	ft_putendl("\nafter swap");
+
+	tmp1 = &env->file;
+	tmp2 = &env->file->nxt;
+	if (env->file->pvs)
+		env->file->pvs->nxt = *tmp2;
+	if (env->file->nxt->nxt)
+		env->file->nxt->nxt->pvs = *tmp1;
+	tmp1 = &env->file->nxt->nxt;
+	env->file->nxt->pvs = env->file->pvs;
+	env->file->nxt->nxt = env->file;
+	env->file->pvs = env->file->nxt;
+	env->file->nxt = *tmp1;
+	if (env->file->pvs)
+	{
+		ft_putstr(env->file->pvs->dirent->d_name);
+		ft_putstr("\t--->\t");
+	}
+	ft_putstr(env->file->dirent->d_name);
+	ft_putstr("\t--->\t");
+	ft_putstr(env->file->nxt->dirent->d_name);
+	if (env->file->nxt->nxt)
+	{
+		ft_putstr("\t--->\t");
+		ft_putstr(env->file->nxt->nxt->dirent->d_name);
+	}
+
 	return ;
 }
 
@@ -40,8 +83,6 @@ void		ft_sort_nm_ls(t_env *env)
 	i = ft_count_file(env->file);
 	while (j++ <= i)
 	{
-		while (env->file->pvs)
-			env->file = env->file->pvs;
 		while (env->file->nxt)
 		{
 			if (ft_strcmp(env->file->dirent->d_name,
@@ -49,9 +90,9 @@ void		ft_sort_nm_ls(t_env *env)
 				ft_switch_file(env);
 			env->file = env->file->nxt;
 		}
+		while (env->file->pvs)
+			env->file = env->file->pvs;
 	}
-	while (env->file->pvs)
-		env->file = env->file->pvs;
 	return ;
 }
 /*
