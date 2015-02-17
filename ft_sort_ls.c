@@ -2,17 +2,19 @@
 
 static void	ft_switch_file(t_env *env)
 {
-	t_file		*tmp;
+	t_file		*tmp_nxt;
+	t_file		*tmp_pvs;
 
-	tmp = env->file;
+	tmp_nxt = env->file->nxt;
+	tmp_pvs = env->file->pvs;
 	env->file->nxt = env->file->nxt->nxt;
-	env->file->pvs = tmp->nxt;
+	env->file->pvs = tmp_nxt;
 	if (env->file->nxt)
 		env->file->nxt->pvs = env->file;
 	env->file->pvs->nxt = env->file;
-	env->file->pvs->pvs = tmp->pvs;
+	env->file->pvs->pvs = tmp_pvs;
 	if (env->file->pvs->pvs)
-		env->file->pvs->pvs->nxt = tmp->pvs;
+		env->file->pvs->pvs->nxt = tmp_pvs;
 	return ;
 }
 
