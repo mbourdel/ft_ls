@@ -6,13 +6,29 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 15:38:17 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/09 18:16:59 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/17 13:54:17 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static char		*ft_type(t_stat stat)
+static void		ft_aff_l(char *right, int nb, uid_t uid, gid_t gid, size_t size, char *date, char *name)
+{
+	ft_putstr(right);
+	ft_putchar(' ');
+	ft_putnbr(nb);
+	ft_putchar(' ');
+	ft_putstr((char*)uid);
+	ft_putchar(' ');
+	ft_putstr((char*)gid);
+	ft_putnbr((int)size);
+	ft_putchar(' ');
+	ft_pustr(date);
+	ft_putendl(name);
+	return ;
+}
+
+static char		*ft_right(t_stat stat)
 {
 	char	*res;
 
@@ -32,14 +48,14 @@ static char		*ft_type(t_stat stat)
 
 void			ft_option_l(t_env *env)
 {
-	char	*yolo;
+	char	*right;
 
 	while (env->file != NULL)
 	{
-		yolo = ft_type(env->file->stat);
+		right = ft_right(env->file->stat);
 		if (env->file->dirent->d_name[0] != '.' || env->option.a == 1)
-			ft_putendl(ft_strjoin(yolo, ft_strjoin("\t", env->file->dirent->d_name)));
-		free(yolo);
+			ft_putendl(ft_strjoin(right, ft_strjoin("\t", env->file->dirent->d_name)));
+		free(right);
 		env->file = env->file->nxt;
 	}
 	return ;
