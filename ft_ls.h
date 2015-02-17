@@ -6,9 +6,15 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 15:37:31 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/09 17:04:31 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/17 16:07:06 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#if ((defined __APPLE__) && (!defined MTIME))
+# define MTIME "st_mtimespec.tv_sec"
+#elif ((defined __linux) && (!defined MTIME))
+# define MTIME "st_mtime"
+#endif
 
 #ifndef FT_LS_H
 # define FT_LS_H
@@ -66,4 +72,5 @@ void					ft_sort_nm_ls(t_env *env);
 
 void					ft_error(t_env env);
 //void					ft_printoption(t_env *env); // just for test WTF
+
 #endif

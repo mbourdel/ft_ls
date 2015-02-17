@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/17 12:01:20 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/17 13:37:58 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/17 16:13:58 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,22 @@ void		ft_sort_nm_ls(t_env *env)
 /*
 void		ft_sort_t_ls(t_env *env)
 {
+	int			i;
+	int			j;
 
+	j = 0;
+	i = ft_count_file(env->file);
+	while (j++ <= i)
+	{
+		while (env->file->nxt)
+		{
+			if (env->file->)
+				ft_switch_file(env);
+			env->file = env->file->nxt;
+		}
+		while (env->file->pvs)
+			env->file = env->file->pvs;
+	}
 	return ;
 }
 
