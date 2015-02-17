@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 15:40:10 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/17 16:16:42 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/17 18:31:14 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int			main(int ac, char **av, char **envp)
 {
 	t_env		env;
 
-	ft_putendl(MTIME);
 	ft_init_option(&env.option);
 	env.dir = NULL;
 	if (!envp[0])

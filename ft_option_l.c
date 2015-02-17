@@ -6,29 +6,34 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 15:38:17 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/17 16:15:47 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/17 18:30:02 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-/*
-static void		ft_aff_l(char *right, int nb, uid_t uid, gid_t gid, size_t size, char *date, char *name)
+
+static void		ft_aff_l(char *right, nlink_t nb, char *uid,/* gid_t gid,*/off_t size, int date, char *name)
 {
 	ft_putstr(right);
-	ft_putchar(' ');
+	if (nb < 100)
+		ft_putchar(' ');
+	if (nb < 10)
+		ft_putchar(' ');
+	ft_putstr("  ");
 	ft_putnbr(nb);
 	ft_putchar(' ');
-//	ft_putstr(uid);
-//	ft_putchar(' ');
+	ft_putstr(uid);
+	ft_putchar(' ');
 //	ft_putstr(gid);
 //	ft_putchar(' ');
 	ft_putnbr((int)size);
 	ft_putchar(' ');
-	ft_putstr(date);
+	ft_putstr(ft_itoa(date));
+	ft_putchar(' ');
 	ft_putendl(name);
 	return ;
 }
-*/
+
 static char		*ft_right(t_stat stat)
 {
 	char	*res;
@@ -49,13 +54,16 @@ static char		*ft_right(t_stat stat)
 
 void			ft_option_l(t_env *env)
 {
-	char	*right;
+	char		*right;
+	t_passwd	*pwuid;
 
 	while (env->file != NULL)
 	{
+		pwuid = getpwuid(env->file->stat.st_uid);
 		right = ft_right(env->file->stat);
 		if (env->file->dirent->d_name[0] != '.' || env->option.a == 1)
-			ft_putendl(ft_strjoin(right, ft_strjoin("\t", env->file->dirent->d_name)));
+			//ft_putendl(ft_strjoin(right, ft_strjoin("\t", env->file->dirent->d_name)));
+			ft_aff_l(right, env->file->stat.st_nlink, pwuid->pw_name, env->file->stat.st_size, env->file->stat.MTIME, env->file->dirent->d_name);
 		free(right);
 		env->file = env->file->nxt;
 	}

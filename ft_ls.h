@@ -6,25 +6,28 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 15:37:31 by mbourdel          #+#    #+#             */
-/*   Updated: 2015/02/17 16:07:06 by mbourdel         ###   ########.fr       */
+/*   Updated: 2015/02/17 18:30:43 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #if ((defined __APPLE__) && (!defined MTIME))
-# define MTIME "st_mtimespec.tv_sec"
+# define MTIME st_mtimespec.tv_sec
 #elif ((defined __linux) && (!defined MTIME))
-# define MTIME "st_mtime"
+# define MTIME st_mtime
 #endif
 
 #ifndef FT_LS_H
 # define FT_LS_H
 # include "libft/libft.h"
-# include <dirent.h>
+# include <sys/types.h>
 # include <sys/stat.h>
+# include <dirent.h>
+# include <pwd.h>
 # include <errno.h>
 
 typedef struct dirent	t_dirent;
 typedef struct stat		t_stat;
+typedef struct passwd	t_passwd;
 
 typedef struct s_file	t_file;
 struct					s_file
